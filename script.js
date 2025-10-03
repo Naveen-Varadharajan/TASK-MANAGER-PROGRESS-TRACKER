@@ -23,12 +23,22 @@ function renderTasks() {
   taskList.innerHTML = '';
   let filtered = tasks;
 
-  if (filter.value === 'active') filtered = tasks.filter(t => !t.completed);
-  if (filter.value === 'completed') filtered = tasks.filter(t => t.completed);
+  if (filter.value === 'active') {
+    filtered = tasks.filter(t => !t.completed);
+  }
+  if (filter.value === 'completed') {
+    filtered = tasks.filter(t => t.completed);
+  }
 
-  if (sort.value === 'due') filtered.sort((a,b) => (a.due||'') > (b.due||'') ? 1 : -1);
-  if (sort.value === 'priority') filtered.sort((a,b) => b.priority.localeCompare(a.priority));
-  if (sort.value === 'created') filtered.sort((a,b) => b.created - a.created);
+  if (sort.value === 'due') {
+    filtered.sort((a, b) => (a.due || '') > (b.due || '') ? 1 : -1);
+  }
+  if (sort.value === 'priority') {
+    filtered.sort((a, b) => b.priority.localeCompare(a.priority));
+  }
+  if (sort.value === 'created') {
+    filtered.sort((a, b) => b.created - a.created);
+  }
 
   filtered.forEach(task => {
     const node = taskTpl.content.cloneNode(true);
